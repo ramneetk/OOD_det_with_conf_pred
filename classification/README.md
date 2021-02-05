@@ -14,3 +14,7 @@ Command for running experiments for all 10 classes, assumes models saved in save
 Command for running experiment for a single class
       
       python check_OOD_CEL.py --cuda --dataroot dataset --batchSize $batch_size$ --gpu $gpu_num$ --n $martingale_param n$ --net $path to the saved model$ --ood_dataset cifar_non$class_num$_class  --indist_class $class_num$ --l 900 --lmbda 0
+
+### Link to the saved models
+
+    https://drive.google.com/drive/folders/1pMs8Mckjv3V5NjfXUhA-5ufPF8Hf0mW6?usp=sharing
