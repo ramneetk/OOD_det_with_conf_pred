@@ -1,6 +1,4 @@
 ### Downloading CIFAR10 dataset 
-   mkdir dataset
-   
    Set download=True in the definition of CIFAR10 from dataset.py
 
 ### Training CIFAR10 model with ResNet architechture
@@ -26,3 +24,6 @@ Table 2 results, assumes that the models are saved as saved_models/class$0-9$.pt
 
 ### Generating TNR/AUROC VS n plots for CIFAR10 dataset, TNR results are saved in CIFAR10_$SVHN/LSUN/CIFAR100/Places365$_avr_tnr_diff_n_50.npz and AUROC results saved in CIFAR10_$SVHN/LSUN/CIFAR100/Places365$_avr_roc_diff_n_50.npz
     python check_performance_n.py --cuda --dataroot dataset --batchSize 100 --gpu 0 --net saved_models/cifar10.pth --n 50 --ood_dataset $SVHN/LSUN/CIFAR100/Places365$ --l 9000
+
+### Link to the saved models
+    https://drive.google.com/drive/folders/1AOA-xHDc5Wlh3gycC09iDW2h9NqZPe8R?usp=sharing
