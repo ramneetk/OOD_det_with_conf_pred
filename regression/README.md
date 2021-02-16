@@ -1,5 +1,6 @@
 ### Downloading CIFAR10 dataset 
    mkdir dataset
+   
    Set download=True in the definition of CIFAR10 from dataset.py
 
 ### Link to Imagenet and LSUN datasets
