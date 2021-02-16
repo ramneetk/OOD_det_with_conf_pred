@@ -1,5 +1,6 @@
 ### Downloading CIFAR10 dataset in dataset folder
    mkdir dataset
+   
    Set download=True in the definition of CIFAR10 from dataset.py
 
 ### Training AVT model with Wideresnet architechture on class$class_num$ of CIFAR10
