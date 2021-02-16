@@ -1,6 +1,6 @@
 '''
 command to run
-python train.py --cuda --outf $output dir for saving the model$ --dataroot dataset --gpu $gpu_num$ --class_num $0-9$
+python train.py --cuda --outf $output dir for saving the model$ --dataroot dataset --gpu $gpu_num$ --class_num $0-9$ --lmbda 3
 '''
 
 
