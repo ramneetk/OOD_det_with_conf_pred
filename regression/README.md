@@ -1,4 +1,5 @@
 ### Downloading CIFAR10 dataset 
+   mkdir dataset
    Set download=True in the definition of CIFAR10 from dataset.py
 
 ### Training CIFAR10 model with ResNet architechture
