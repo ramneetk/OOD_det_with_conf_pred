@@ -1,20 +1,29 @@
-### Downloading CIFAR10 dataset in dataset folder
-   mkdir dataset
-   
+### Downloading CIFAR10 dataset 
    Set download=True in the definition of CIFAR10 from dataset.py
 
-### Training AVT model with Wideresnet architechture on class$class_num$ of CIFAR10
-      python main.py --cuda --outf $output dir for saving the model$ --dataroot dataset --gpu $gpu_num$ --class_num $0-9$ 
+### Training CIFAR10 model with ResNet architechture
+    python train.py --cuda --outf $output dir$ --dataroot dataset --archi resnet34 --batchSize 100 --gpu 0 --niter 3700
 
-### OOD detection
-Command for running experiments for all 10 classes, assumes models saved in saved_models/class$class_num$_net.pth
+### Training class$0-9$ model of CIFAR10 with WideResnet architechture
+    python train.py --cuda --outf $output dir$ --dataroot dataset --archi wideresnet --batchSize 100 --gpu 0 --niter 4500 --class_num $0-9$ --wgtDecay 0.0055
 
-      python check_OOD_CEL.py --cuda --dataroot dataset --batchSize $batch_size$ --gpu $gpu_num$ --n $martingale_param n$ --indist_class 10 --l 900
+### Generating TNR and AUROC results (Table 1) for CIFAR10 and AUROC for class-wise models of CIFAR10 (Table 2)
+Table 1 results, For ICAD --n 1, for ours --n 20, assumes CIFAR10 model saved as saved_models/cifar10.pth:
 
-Command for running experiment for a single class
-      
-      python check_OOD_CEL.py --cuda --dataroot dataset --batchSize $batch_size$ --gpu $gpu_num$ --n $martingale_param n$ --net $path to the saved model$ --ood_dataset cifar_non$class_num$_class  --indist_class $class_num$ --l 900 --lmbda 0
+    python check_OOD.py --cuda --dataroot dataset --batchSize 100 --gpu 0 --net saved_models/cifar10.pth --n $1,20$ --ood_dataset $SVHN/LSUN/CIFAR100/Places365$ --archi resnet34 --one_class_det 0 --l 9000
+
+Table 1 baseline results for CIFAR100: 
+
+    python check_OOD.py --cuda --dataroot dataset --batchSize 100 --gpu 0 --net saved_models/cifar10.pth --n 1 --ood_dataset CFIAR100 --archi resnet34 --one_class_det 0 --l 9000
+
+    python gen_baseline_results.py
+
+Table 2 results, assumes that the models are saved as saved_models/class$0-9$.pth and saves the results for all the classes in all_results_valsize_900.txt
+
+    python check_OOD.py --cuda --dataroot dataset --batchSize 100 --gpu 0  --n 20 --indist_class 10 --archi wideresnet  --l 900
+
+### Generating TNR/AUROC VS n plots for CIFAR10 dataset, TNR results are saved in CIFAR10_$SVHN/LSUN/CIFAR100/Places365$_avr_tnr_diff_n_50.npz and AUROC results saved in CIFAR10_$SVHN/LSUN/CIFAR100/Places365$_avr_roc_diff_n_50.npz
+    python check_performance_n.py --cuda --dataroot dataset --batchSize 100 --gpu 0 --net saved_models/cifar10.pth --n 50 --ood_dataset $SVHN/LSUN/CIFAR100/Places365$ --l 9000
 
 ### Link to the saved models
-
-    https://drive.google.com/drive/folders/1pMs8Mckjv3V5NjfXUhA-5ufPF8Hf0mW6?usp=sharing
+    https://drive.google.com/drive/folders/1AOA-xHDc5Wlh3gycC09iDW2h9NqZPe8R?usp=sharing
