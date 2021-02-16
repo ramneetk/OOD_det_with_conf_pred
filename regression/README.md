@@ -1,5 +1,10 @@
 ### Downloading CIFAR10 dataset 
+   mkdir dataset
    Set download=True in the definition of CIFAR10 from dataset.py
+
+### Link to Imagenet and LSUN datasets
+    mkdir data and upload these datasets in /data
+    https://drive.google.com/drive/folders/1BSQKZH8Ze7Q0AxPwh97bktz1iKB2RTGh?usp=sharing
 
 ### Training CIFAR10 model with ResNet architechture
     python train.py --cuda --outf $output dir$ --dataroot dataset --archi resnet34 --batchSize 100 --gpu 0 --niter 3700
@@ -27,3 +32,4 @@ Table 2 results, assumes that the models are saved as saved_models/class$0-9$.pt
 
 ### Link to the saved models
     https://drive.google.com/drive/folders/1AOA-xHDc5Wlh3gycC09iDW2h9NqZPe8R?usp=sharing
+
