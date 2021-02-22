@@ -1,6 +1,6 @@
 '''
 command to run - 
-python check_performance_n.py --cuda --dataroot dataset --batchSize 100 --gpu 0 --net saved_models/cifar10.pth --n 20 --ood_dataset $SVHN/LSUN/CIFAR100/Places365$ --l 9000
+python check_performance_n.py --cuda --dataroot dataset --batchSize 100 --gpu 0 --net saved_models/cifar10.pth --n 50 --ood_dataset $SVHN/LSUN/CIFAR100/Places365$ --l 9000
 '''
 
 from __future__ import print_function
@@ -145,6 +145,7 @@ def calc_p_values(n, test_mse, cal_set_mse, is_val_set):
 
     compare = test_mse_reshaped<=cal_set_mse_reshaped
     p_values = np.sum(compare, axis=1)
+    p_values = p_values/len(cal_set_mse)
     
     if is_val_set==1:
         np.savez("cifar10_p_values_n{}.npz".format(n), p_values=p_values)
