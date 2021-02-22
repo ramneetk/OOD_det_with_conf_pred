@@ -216,6 +216,7 @@ def calc_p_values(n, test_cel, cal_set_cel, is_val_set):
 
     compare = test_cel_reshaped<=cal_set_cel_reshaped
     p_values = np.sum(compare, axis=1)
+    p_values = p_values/len(cal_set_cel)
     
     if is_val_set==1:
         np.savez("cifar10_class{}_p_values_n{}.npz".format(opt.indist_class, n), p_values=p_values)
